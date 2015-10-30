@@ -16,6 +16,9 @@ def search():
     for searchsword in reversed(searchsWords):
         if searchsword in stop:
             searchsWords.remove(searchsword)
+    os.system("say 'Did you know that '")
+    os.system("say " + searchsWords[0])
+    os.system("say ' is;'")
     print("Did you know that " + searchsWords[0] + " is;")  
     print wikipedia.summary(searchsWords[0])
     search()
@@ -27,7 +30,10 @@ def Positive():
     for goodword in reversed(searchGoodWords):
         if goodword in stop:
             searchGoodWords.remove(goodword)
-    print("Did you know that " + searchGoodWords[0] + " is;")  
+    os.system("say 'Did you know that '")
+    os.system("say " + searchGoodWords[0])
+    os.system("say ' is;'")
+    print("Did you know that " + searchGoodWords[0] + " is;") 
     print wikipedia.summary(searchGoodWords[0])
     search()
 def Negative():
@@ -38,7 +44,10 @@ def Negative():
     for badword in reversed(searchBadWords):
         if badword in stop:
             searchBadWords.remove(badword)
-    print("Did you know that " + searchBadWords[0] + " is;") 
+    os.system("say 'Did you know that '")
+    os.system("say " + searchBadWords[0])
+    os.system("say ' is;'")
+    print("Did you know that " + searchBadWords[0] + " is;")
     print wikipedia.summary(searchBadWords[0])
     search()
 def Hello():
@@ -52,7 +61,9 @@ def Hello():
         if word in stop:
             HIWords.remove(word)
     HI=''.join(HIWords)
-    os.system("say 'Hi,How are you? '")
+    os.system("say 'Hi,'")
+    os.system("say " + HI)
+    os.system("say 'How are you? '")
     Feels=raw_input("Hi " + HI + " ,How are you? ") 
     Feels=Feels.lower()
     FeelsWords = Feels.split()
@@ -65,12 +76,16 @@ def Hello():
     elif Feels in ["notgood", "bad", "sad", "mad", "lonely", "angry", "ill"] :
         Negative()
     else:
+        os.system("say 'Is there a particular reason why? '")
         searchNeautral=raw_input("Is there a particular reason why?")
         searchNeautral=searchNeautral.lower()
         searchNeautralWords = searchNeautral.split()
         for neutralword in reversed(searchNeautralWords):
             if neutralword in stop:
                 searchNeautralWords.remove(neutralword)
+        os.system("say 'Did you know that '")
+        os.system("say " + searchNeautralWords[0])
+        os.system("say ' is;'")
         print("Did you know that " + searchNeautralWords[0] + " is;") 
         print wikipedia.summary(searchNeautralWords[0])
         search()
